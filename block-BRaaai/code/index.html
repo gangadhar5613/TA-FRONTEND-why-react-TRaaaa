@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using JSX</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <article class="card-section h-screen m-10 "></article>
+  <script type="text/babel">
+   
+            let cardInfo = {
+            title: 'City Lights in New York',
+            date: new Date('2017-01-26'),
+            comments: 67,
+            subTitle: 'The city that never sleeps.',
+            description:
+                'New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.',
+            category: 'photos',
+            imageURL:
+                'https://images.unsplash.com/photo-1610874933184-7728fd666162?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+            };
+            const month = cardInfo.toLocaleString("default", { month: "short" });
+           const cardSection = document.querySelector('.card-section')
+               let card =  <section className = 'card shadow-xl flex flex-col justify-center items-center w-96 relative'>
+
+                    <div className= 'img-section relative'>
+                        <div className= 'date bg-red-500 w-20 text-center h-20 flex flex-col items-center justify-center absolute top-8 right-10 rounded-full'>
+                            <span className= 'font-bold'>{cardInfo.date.getDate()}</span>
+                            <span className='font-bold'>Jan</span>
+                        </div>
+                        <img src={cardInfo.imageURL} alt="card image"/>
+                        <div className='photos bg-red-500  p-1 absolute left-0 bottom-0'>
+                            <h3 className= 'text-2xl font-bold'>{cardInfo.category}</h3>
+                        </div>
+                    </div>
+                   
+                    <div className= 'text-section p-5 relative'>
+                        
+                      <h1 className='heading py-3 text-3xl font-bold'>{cardInfo.title}</h1>  
+                      <h2 className='subtitle py-3 text-2xl text-red-600 font-medium'>{cardInfo.subTitle}</h2>                                    
+                      <p className='description py-3'>{cardInfo.description}</p>
+                      <div className='timing flex flex-row '>
+                         <div className= 'time mx-5 font-bold '>
+                           <span>6 min ago</span>
+                         </div>
+                         <div className= 'comments font-bold '>
+                            <i class="far fa-comments mx-2 "></i>
+                            <span>{cardInfo.comments} comments</span>
+                         </div> 
+                      </div>
+                    </div>
+                </section>
+             
+                ReactDOM.render(card,cardSection);
+           
+
+  </script>
+</body>
+</html>
